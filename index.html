@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Nomenclature Game</title>
+	<link rel="stylesheet" type="text/css" href="style.CSS">
+</head>
+<body>
+<div id="Start_Screen" >
+	<img src="title.jpg" width="60%" height="60%">
+<br>
+	<table>
+	<tr>
+	<img src="Start_Game.jpg" onClick="changeState('Level')" width="20%" height="20%">
+	</tr>
+	<tr>
+	<img src="Tutorial_Button.jpg" onClick="changeState('Tutorial')" width="20%" height="20%">
+	</tr>
+	<tr>
+	<img src="file:///Users/vaniedwardson/Documents/waterloo/NE122Project/Level_Select.jpg" onClick="changeState('Level')" width="20%" height="20%">
+	</tr>
+	</table>
+</div>
+<div id="Tutorial">
+	<h1>Tutorial</h1>
+	<p>The aim of the game is to catch the right molecule names in the little basket, the basket is controlled by the right and left arrow keys</p>
+	<button onclick="changeState('Start_Screen')"></button>
+</div>
+<div id="Level">
+	<script>
+
+var myGamePiece;
+
+function startGame() {
+    myGameArea.start();
+    myGamePiece = new component(30, 30, "red", 10, 120);
+}
+
+var myGameArea = {
+    canvas : document.createElement("canvas"),
+    start : function() {
+        this.canvas.width = 480;
+        this.canvas.height = 270;
+        this.context = this.canvas.getContext("2d");
+        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+    }
+}
+
+function component(width, height, color, x, y) {
+    this.width = width;
+    this.height = height;
+    this.x = x;
+    this.y = y;
+    ctx = myGameArea.context;
+    ctx.fillStyle = color;
+    ctx.fillRect(this.x, this.y, this.width, this.height);
+}
+
+</script>
+<button onclick="changeState('Start_Screen')"></button>
+</div>
+<div id="Game_Over">
+	<h1 style="color: limegreen">GAME OVER</h1>
+</div>
+<div id="Win"> </div>
+</body>
+
+<script>
+	possibleStates = ["Start_Screen", "Tutorial", "Level", "Game_Over", "Win"];
+	function changeState(newState) {
+		for (x = 0; x < possibleStates.length; x++) {
+			document.getElementById(possibleStates[x]).style.display = "none";
+		}
+		document.getElementById(newState).style.display = "block";
+	}
+	changeState("Start_Screen");
+</script>
+</html>
