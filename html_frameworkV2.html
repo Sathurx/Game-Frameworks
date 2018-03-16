@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Nomenclature Game</title>
+	<link rel="stylesheet" type="text/css" href="style.CSS">
+	<script src="gamepartV2.js"></script>
+</head>
+<body>
+<div id="Start_Screen" >
+	<img src="title.jpg" width="60%" height="60%">
+<br>
+	<table>
+	<tr>
+	<img src="Start_Game.jpg" onClick="changeState('Level')" width="20%" height="20%">
+	</tr>
+	<tr>
+	<img src="Tutorial_Button.jpg" onClick="changeState('Tutorial')" width="20%" height="20%">
+	</tr>
+	<tr>
+	<img src="Level_Select.jpg" onClick="changetoLevels()" width="20%" height="20%">
+	</tr>
+	</table>
+</div>
+<div id="Tutorial">
+	<h1 style= "text-align: center"> Welcome to Nomeclature Review Game!</h1>
+	<h2 style= "text-align: center"> Do you have want it takes to name any types of molecules covered in NE 122?</h2>
+	<h2 style= "text-align: center"> If so, this is the game for you!</h2>
+
+	<p> The aim of the game is to catch the right molecule names in the little basket, the basket</p>
+	<p> You will be given few minutes before each level to see the images of each molecule</p>
+	<p> Then the game starts with you having 5 hearts and names of molcules dropping down from your screen</p>
+	<p> Each time you either catch the wrong answer or drop the correct one, you will lose one heart</p>
+	<p> The game will continue until the user loses all of their hearts or the level is completed</p>
+
+	<p> The point of this game is to improve on your skill in naming molecules from alkanes to cycloalkanes</p>
+	<p> However the main reason of this game is to have fun!!!</p>
+
+	<h1 style= "text-align: center"> For Example</h1>
+	<img src="2-butyl-1-octene.jpg" class = "center">
+	<br>
+	<p> You would be given this image beforehand and once the game starts you should already know the name of this molecule</p>
+	<p> Once the game starts you would try to catch "2-butyl-1-octene" that is falling from the top of your screen"</p>
+	<br>
+	<button onclick="changeState('Start_Screen')"></button>
+</div>
+<div id="Level">
+<!--<script>
+
+var myGamePiece;
+
+function startGame() {
+		myGamePiece = new component(30, 30, "red", 10, 120);
+		myGameArea.start();
+
+}
+
+var myGameArea = {
+    canvas : document.createElement("canvas"),
+    start : function() {
+        this.canvas.width = 480;
+        this.canvas.height = 270;
+        this.context = this.canvas.getContext("2d");
+        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+    }
+}
+
+function component(width, height, color, x, y) {
+    this.width = width;
+    this.height = height;
+    this.x = x;
+    this.y = y;
+    ctx = myGameArea.context;
+    ctx.fillStyle = color;
+    ctx.fillRect(this.x, this.y, this.width, this.height);
+}
+
+</script>-->
+<button onclick="changeState('Start_Screen')"></button>
+</div>
+<div id="Game_Over">
+	<h1 style="color: limegreen">GAME OVER</h1>
+</div>
+<div id="Win">
+	<!--<h1> Congratulations!</h1><br>
+	<img src="congratulation_cat.gif" class = "center">
+	<h2> You managed to beat all of our levels</h2>
+	<h2> Now we can say that you are an expert in Nomeclature</h2>
+<h3> Click the button below if you want to play again</h3>
+<button onclick="changeState('Start_Screen')">Start Menu</button>-->
+	</div>
+
+</body>
+
+<script>
+	possibleStates = ["Start_Screen", "Tutorial", "Level", "Game_Over", "Win"];
+	function changeState(newState) {
+		for (x = 0; x < possibleStates.length; x++) {
+			document.getElementById(possibleStates[x]).style.display = "none";
+		}
+		document.getElementById(newState).style.display = "block";
+	}
+	changeState("Start_Screen");
+</script>
+</html>
